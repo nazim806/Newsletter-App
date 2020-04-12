@@ -41,7 +41,7 @@ app.post("/", function (req, res) {
 
   const options = {
     method: "POST",
-    auth: "nazim1:227a3d1c4d974c5572499bbfc55e6709-us19",
+    auth: "nazim1:a227a3d1c4d974c5572499bbfc55e6709-us19",
   };
 
   // from node.js https module --> https.get(url, options, callback)
@@ -59,6 +59,10 @@ app.post("/", function (req, res) {
 
   request.write(jsonData);
   request.end();
+});
+
+app.post("/failure", function (req, res) {
+  res.redirect("/");
 });
 
 app.listen(3000, function () {
