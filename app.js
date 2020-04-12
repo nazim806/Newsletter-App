@@ -3,6 +3,8 @@ const bodyParser = require("body-parser");
 const request = require("request");
 const https = require("https");
 
+require("dotenv").config();
+
 const app = express();
 
 // to access static files like css and image we will use express and relative path to those files
@@ -37,9 +39,11 @@ app.post("/", function (req, res) {
 
   const url = "https://us19.api.mailchimp.com/3.0/lists/abd6c02491";
 
+  const apiKey = process.env.API_KEY;
+
   const options = {
     method: "POST",
-    auth: "nazim1:83ad446d0ab5cccabb4289ff4b8b6fb0-us19",
+    auth: apiKey
   };
 
   // from node.js https module --> https.get(url, options, callback)
@@ -58,8 +62,6 @@ app.listen(3000, function () {
 });
 
 // API key
-
-// 83ad446d0ab5cccabb4289ff4b8b6fb0-us19
 
 // List ID
 
