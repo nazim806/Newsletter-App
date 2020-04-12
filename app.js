@@ -39,10 +39,7 @@ app.post("/", function (req, res) {
 
   const url = "https://us19.api.mailchimp.com/3.0/lists/abd6c02491";
 
-  const options = {
-    method: "POST",
-    auth: "nazim1:a227a3d1c4d974c5572499bbfc55e6709-us19",
-  };
+  const options = process.env.options;
 
   // from node.js https module --> https.get(url, options, callback)
   const request = https.request(url, options, function (response) {
@@ -65,7 +62,7 @@ app.post("/failure", function (req, res) {
   res.redirect("/");
 });
 
-app.listen(3000, function () {
+app.listen(process.env.PORT ||3000, function () {
   console.log("Server is running on port 3000");
 });
 
