@@ -39,15 +39,19 @@ app.post("/", function (req, res) {
 
   const url = "https://us19.api.mailchimp.com/3.0/lists/abd6c02491";
 
-  const apiKey = process.env.API_KEY;
-
   const options = {
     method: "POST",
-    auth: apiKey
+    auth: "nazim1:227a3d1c4d974c5572499bbfc55e6709-us19",
   };
 
   // from node.js https module --> https.get(url, options, callback)
   const request = https.request(url, options, function (response) {
+    if (response.statusCode === 200) {
+      res.sendFile(__dirname + "/success.html");
+    } else {
+      res.sendFile(__dirname + "/failure.html");
+    }
+
     response.on("data", function (data) {
       console.log(JSON.parse(data));
     });
@@ -66,3 +70,4 @@ app.listen(3000, function () {
 // List ID
 
 // abd6c02491
+//abd6c02491
